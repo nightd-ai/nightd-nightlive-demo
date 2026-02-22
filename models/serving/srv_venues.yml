@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: srv_venues
+    columns:
+      - name: venue_id
+        tests:
+          - unique
+          - not_null
+      - name: venue_name
+        tests:
+          - not_null
+      - name: license_type
+        tests:
+          - accepted_values:
+              values: ['full_night', 'weekend']

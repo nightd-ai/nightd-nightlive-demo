@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: srv_tickets
+    columns:
+      - name: ticket_id
+        tests:
+          - unique
+          - not_null
+      - name: event_id
+        tests:
+          - relationships:
+              to: ref('srv_events')
+              field: event_id
+      - name: ticket_type
+        tests:
+          - accepted_values:
+              values: ['early_bird', 'regular', 'at_door']
+      - name: ticket_status
+        tests:
+          - accepted_values:
+              values: ['used', 'refunded', 'cancelled']

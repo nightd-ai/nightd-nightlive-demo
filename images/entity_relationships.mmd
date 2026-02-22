@@ -1,0 +1,116 @@
+erDiagram
+    venues ||--o{ events : hosts
+    venues ||--o{ door_entries : "venue_id"
+    venues ||--o{ bar_transactions : "venue_id"
+    venues ||--o{ sound_checks : "venue_id"
+
+    events ||--o{ lineup_slots : has
+    events ||--o{ tickets : sells
+    events ||--o{ door_entries : admits
+    events ||--o{ bar_transactions : records
+    events ||--o{ sound_checks : requires
+
+    artists ||--o{ lineup_slots : performs
+    artists ||--o{ bookings : contracted
+
+    lineup_slots ||--o| bookings : "matched by event+artist"
+
+    bookings ||--o| payouts : "paid via"
+
+    tickets ||--o{ door_entries : scanned
+
+    venues {
+        varchar venue_id PK
+        varchar venue_name
+        integer total_capacity
+        integer spl_limit_db
+        varchar license_type
+        varchar opening_hours_start
+        varchar opening_hours_end
+        numeric headliner_minimum_fee
+    }
+
+    artists {
+        varchar artist_id PK
+        varchar artist_name
+        varchar genre
+        varchar booking_tier
+        boolean is_resident
+    }
+
+    events {
+        varchar event_id PK
+        varchar venue_id FK
+        varchar event_name
+        date event_date
+        timestamp event_start
+        timestamp event_end
+        varchar door_policy
+        varchar event_status
+    }
+
+    lineup_slots {
+        varchar slot_id PK
+        varchar event_id FK
+        varchar artist_id FK
+        varchar room
+        timestamp set_start
+        timestamp set_end
+        boolean is_headliner
+        numeric fee
+    }
+
+    tickets {
+        varchar ticket_id PK
+        varchar event_id FK
+        varchar ticket_type
+        numeric price
+        varchar ticket_status
+    }
+
+    door_entries {
+        varchar entry_id PK
+        varchar event_id FK
+        varchar venue_id FK
+        varchar ticket_id FK
+        timestamp entry_timestamp
+        varchar entry_status
+        boolean is_reentry
+    }
+
+    bar_transactions {
+        varchar transaction_id PK
+        varchar event_id FK
+        varchar venue_id FK
+        varchar entry_id FK
+        timestamp timestamp
+        numeric amount
+        varchar payment_method
+    }
+
+    bookings {
+        varchar booking_id PK
+        varchar event_id FK
+        varchar artist_id FK
+        numeric agreed_fee
+        varchar payment_status
+        varchar rider_requirements
+    }
+
+    sound_checks {
+        varchar soundcheck_id PK
+        varchar event_id FK
+        varchar venue_id FK
+        varchar room
+        timestamp check_timestamp
+        integer spl_reading_db
+        boolean engineer_signoff
+    }
+
+    payouts {
+        varchar payout_id PK
+        varchar booking_id FK
+        numeric amount
+        date payout_date
+        varchar invoice_status
+    }

@@ -1,0 +1,25 @@
+[tools]
+uv = "latest"
+
+[tasks.seed]
+description = "Load seed CSVs into DuckDB"
+run = "uv run dbt seed"
+
+[tasks.run]
+description = "Build staging and serving models"
+run = "uv run dbt run"
+
+[tasks.test]
+description = "Run all dbt tests"
+run = "uv run dbt test"
+
+[tasks.build]
+description = "Seed, run, and test in sequence"
+run = "uv run dbt seed && uv run dbt run && uv run dbt test"
+
+[tasks.clean]
+description = "Remove DuckDB file and dbt artifacts"
+run = "rm -f nightlive.duckdb nightlive.duckdb.wal && rm -rf target/ logs/"
+
+[settings]
+python.uv_venv_auto = true

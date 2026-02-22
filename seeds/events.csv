@@ -1,0 +1,11 @@
+event_id,venue_id,event_name,event_date,event_start,event_end,door_policy,event_status
+E001,V001,Klubnacht,2024-11-15,2024-11-15 23:59,2024-11-17 18:00,strict,completed
+E002,V002,Tresor.Neu,,2024-11-15 23:30,2024-11-16 12:00,relaxed,completed
+E003,,Blank Friday,2024-11-15,,2024-11-16 14:00,relaxed,completed
+E004,V004,Sisyphos Weekend,2024-11-16,,2024-11-18 22:00,relaxed,completed
+E005,V005,RSO Nacht,2024-11-16,,2024-11-17 10:00,members_only,completed
+E006,V001,Panorama Bar Daytime,2024-11-22,2024-11-22 23:59,2024-11-24 18:00,strict,completed
+E007,V002,Tresor Closing,2024-11-22,2024-11-22 23:30,,relaxed,completed
+E008,V003,ambient blank,2024-11-23,2024-11-23 20:00,2024-11-24 06:00,relaxed,confirmed
+E009,V004,Hammahalle Opening,2024-12-06,2024-12-06 22:00,2024-12-08 22:00,relaxed,confirmed
+E010,V005,NYE at RSO,2024-12-31,2024-12-31 23:00,2025-01-01 12:00,members_only,confirmed

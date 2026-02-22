@@ -1,0 +1,16 @@
+artist_id,artist_name,genre,booking_tier,is_resident,home_city
+A001,Marcel Dettmann,techno,headliner,true,Berlin
+A002,Ben Klock,techno,headliner,true,Berlin
+A003,Ellen Allien,electro,headliner,true,Berlin
+A004,Kobosil,techno,mid_tier,true,Berlin
+A005,FJAAK,techno,mid_tier,true,Berlin
+A006,Rodhad,techno,mid_tier,true,Berlin
+A007,Setaoc Mass,techno,mid_tier,false,London
+A008,SPFDJ,techno,mid_tier,false,Amsterdam
+A009,I Hate Models,industrial,headliner,false,Paris
+A010,Blawan,techno,headliner,false,Manchester
+A011,DJ Nobu,minimal,mid_tier,false,Tokyo
+A012,Regal,techno,mid_tier,false,Barcelona
+A013,Phase Fatale,industrial,mid_tier,true,Berlin
+A014,Freddy K,techno,opener,true,Berlin
+A015,Niki Istrefi,house,opener,false,Berlin

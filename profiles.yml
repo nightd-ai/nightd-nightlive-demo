@@ -1,0 +1,7 @@
+nightlive:
+  target: default
+  outputs:
+    default:
+      type: duckdb
+      path: nightlive.duckdb
+      threads: 4

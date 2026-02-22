@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: srv_artists
+    columns:
+      - name: artist_id
+        tests:
+          - unique
+          - not_null
+      - name: artist_name
+        tests:
+          - not_null
+      - name: booking_tier
+        tests:
+          - accepted_values:
+              values: ['headliner', 'mid_tier', 'opener']
+      - name: genre
+        tests:
+          - accepted_values:
+              values: ['techno', 'electro', 'industrial', 'minimal', 'house']

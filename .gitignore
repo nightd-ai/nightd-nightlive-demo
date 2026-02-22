@@ -1,8 +1,13 @@
-target/
+#dbt
 logs/
+target/
+.user.yml
+
+#duckb
 nightlive.duckdb
 nightlive.duckdb.wal
+
+#Python
 .venv/
 __pycache__/
 *.pyc
-.seeds_backup/

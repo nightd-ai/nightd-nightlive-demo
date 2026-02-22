@@ -1,0 +1,13 @@
+name: nightlive
+profile: nightlive
+
+seeds:
+  nightlive:
+    +quote_columns: false
+
+models:
+  nightlive:
+    staging:
+      +materialized: view
+    serving:
+      +materialized: table

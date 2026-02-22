@@ -1,0 +1,164 @@
+version: 2
+
+sources:
+  - name: nightlive
+    description: Berlin techno nightlife operations raw data
+    schema: main
+    tables:
+      - name: venues
+        description: Clubs and event spaces with capacity and licensing info
+        columns:
+          - name: venue_id
+            description: Unique venue identifier
+          - name: venue_name
+            description: Name of the club/venue
+          - name: total_capacity
+            description: Total venue capacity across all rooms
+          - name: main_floor_capacity
+            description: Main dance floor capacity
+          - name: bar_area_capacity
+            description: Bar area capacity
+          - name: garden_capacity
+            description: Outdoor garden area capacity
+          - name: spl_limit_db
+            description: Maximum allowed SPL in decibels per venue license
+          - name: headliner_minimum_fee
+            description: Minimum fee for headliner slots at this venue
+
+      - name: artists
+        description: DJs and live acts
+        columns:
+          - name: artist_id
+            description: Unique artist identifier
+          - name: artist_name
+            description: Stage name
+          - name: genre
+            description: Primary genre
+          - name: booking_tier
+            description: Booking tier (headliner, mid_tier, opener)
+          - name: is_resident
+            description: Whether artist is a venue resident
+
+      - name: events
+        description: Parties and club nights
+        columns:
+          - name: event_id
+            description: Unique event identifier
+          - name: venue_id
+            description: FK to venues
+          - name: event_start
+            description: Event start timestamp
+          - name: event_end
+            description: Event end timestamp
+          - name: event_status
+            description: Event status (draft, confirmed, live, completed)
+
+      - name: lineup_slots
+        description: Artist-to-event set time assignments
+        columns:
+          - name: slot_id
+            description: Unique slot identifier
+          - name: event_id
+            description: FK to events
+          - name: artist_id
+            description: FK to artists
+          - name: room
+            description: Room/stage within venue
+          - name: set_start
+            description: Set start timestamp
+          - name: set_end
+            description: Set end timestamp
+          - name: is_headliner
+            description: Whether this is a headliner slot
+          - name: fee
+            description: Artist fee for this slot
+
+      - name: tickets
+        description: Presale and at-door tickets
+        columns:
+          - name: ticket_id
+            description: Unique ticket identifier
+          - name: event_id
+            description: FK to events
+          - name: ticket_type
+            description: Ticket type (early_bird, regular, at_door)
+          - name: price
+            description: Ticket price
+          - name: ticket_status
+            description: Status (used, refunded, cancelled)
+
+      - name: door_entries
+        description: Door scan and entry records
+        columns:
+          - name: entry_id
+            description: Unique entry identifier
+          - name: event_id
+            description: FK to events
+          - name: venue_id
+            description: FK to venues
+          - name: ticket_id
+            description: FK to tickets (nullable for guest list)
+          - name: entry_timestamp
+            description: Timestamp of door scan
+          - name: entry_status
+            description: Entry result (admitted, rejected)
+          - name: is_reentry
+            description: Whether this is a re-entry
+
+      - name: bar_transactions
+        description: POS bar transactions
+        columns:
+          - name: transaction_id
+            description: Unique transaction identifier
+          - name: event_id
+            description: FK to events
+          - name: venue_id
+            description: FK to venues
+          - name: entry_id
+            description: FK to door_entries
+          - name: amount
+            description: Transaction amount
+          - name: payment_method
+            description: Payment method (card, cash)
+
+      - name: bookings
+        description: Artist booking contracts
+        columns:
+          - name: booking_id
+            description: Unique booking identifier
+          - name: event_id
+            description: FK to events
+          - name: artist_id
+            description: FK to artists
+          - name: agreed_fee
+            description: Contracted performance fee
+          - name: payment_status
+            description: Payment status (pending, confirmed, paid, cancelled)
+
+      - name: sound_checks
+        description: Pre-event sound system checks per room
+        columns:
+          - name: soundcheck_id
+            description: Unique sound check identifier
+          - name: event_id
+            description: FK to events
+          - name: venue_id
+            description: FK to venues
+          - name: room
+            description: Room checked
+          - name: spl_reading_db
+            description: Measured SPL in decibels
+          - name: engineer_signoff
+            description: Whether sound engineer signed off
+
+      - name: payouts
+        description: Artist payment records
+        columns:
+          - name: payout_id
+            description: Unique payout identifier
+          - name: booking_id
+            description: FK to bookings
+          - name: amount
+            description: Payout amount
+          - name: invoice_status
+            description: Invoice status (pending, settled)

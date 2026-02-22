@@ -2,11 +2,13 @@
 name = "nightd-nightlive-demo"
 version = "0.1.0"
 description = "Nightlife platform managing clubs, events, DJs, ticket sales, door entry, bar transactions, artist bookings, and sound system logistics."
+readme = "README.md"
+license = "FSL-1.1-ALv2"
 authors = [
     { name = "Jan Ehrhardt" },
     { name = "Florian Stefan" },
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.12,<3.14"
 dependencies = [
     "dbt-core>=1.11.6",
     "dbt-duckdb>=1.10.1",

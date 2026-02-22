@@ -1,0 +1,11 @@
+soundcheck_id,event_id,venue_id,room,check_timestamp,spl_reading_db,equipment_list,engineer_signoff
+SC001,E001,V001,main_floor,2024-11-15 20:00:00,103,funktion_one_main|subs_x4|monitors_x8,true
+SC002,E001,V001,bar_area,2024-11-15 21:00:00,92,funktion_one_bar|subs_x2|monitors_x4,true
+SC003,E002,V002,main_floor,2024-11-15 20:00:00,98,martin_audio_main|subs_x4|monitors_x6,true
+SC004,E003,V003,main_floor,2024-11-15 19:00:00,96,db_audiotechnik_main|subs_x2|monitors_x4,true
+SC005,,V004,main_floor,2024-11-16 18:00:00,93,void_main|subs_x4|monitors_x8,true
+SC006,E004,V004,garden,2024-11-16 19:00:00,88,void_garden|subs_x2|monitors_x4,true
+SC007,,V005,main_floor,2024-11-16 20:00:00,100,custom_main|subs_x2|monitors_x4,true
+SC008,E006,V001,main_floor,2024-11-22 20:00:00,104,funktion_one_main|subs_x4|monitors_x8,true
+SC009,E006,V001,bar_area,2024-11-22 21:00:00,91,funktion_one_bar|subs_x2|monitors_x4,true
+SC010,E007,V002,main_floor,2024-11-22 20:00:00,99,martin_audio_main|subs_x4|monitors_x6,true

@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: srv_event_financials
+    columns:
+      - name: event_id
+        tests:
+          - unique
+          - relationships:
+              to: ref('srv_events')
+              field: event_id

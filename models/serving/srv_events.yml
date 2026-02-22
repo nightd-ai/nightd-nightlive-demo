@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: srv_events
+    columns:
+      - name: event_id
+        tests:
+          - unique
+          - not_null
+      - name: venue_id
+        tests:
+          - relationships:
+              to: ref('srv_venues')
+              field: venue_id
+      - name: event_status
+        tests:
+          - accepted_values:
+              values: ['draft', 'confirmed', 'live', 'completed']
+      - name: door_policy
+        tests:
+          - accepted_values:
+              values: ['strict', 'relaxed', 'members_only']

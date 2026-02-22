@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: srv_payouts
+    columns:
+      - name: payout_id
+        tests:
+          - unique
+          - not_null
+      - name: booking_id
+        tests:
+          - relationships:
+              to: ref('srv_bookings')
+              field: booking_id

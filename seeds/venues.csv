@@ -1,0 +1,6 @@
+venue_id,venue_name,address,total_capacity,main_floor_capacity,bar_area_capacity,garden_capacity,sound_system,spl_limit_db,license_type,opening_hours_start,opening_hours_end,headliner_minimum_fee
+V001,Berghain,Am Wriezener Bahnhof 70,1500,800,400,300,Funktion-One,105,full_night,23:00,20:00,5000
+V002,Tresor,Koepenicker Str 70,700,400,200,100,Martin Audio,100,full_night,23:00,18:00,3000
+V003,://about blank,Markgrafendamm 24c,600,300,150,150,D&B Audiotechnik,98,full_night,23:00,16:00,2500
+V004,Sisyphos,Hauptstr 18,1200,500,300,400,Void Acoustics,95,weekend,22:00,22:00,4000
+V005,RSO.Berlin,Revaler Str 99,400,250,100,50,Custom,102,full_night,23:00,12:00,2000

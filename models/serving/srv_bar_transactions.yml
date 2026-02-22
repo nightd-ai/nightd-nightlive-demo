@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: srv_bar_transactions
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: event_id
+        tests:
+          - relationships:
+              to: ref('srv_events')
+              field: event_id
+      - name: venue_id
+        tests:
+          - relationships:
+              to: ref('srv_venues')
+              field: venue_id
+      - name: payment_method
+        tests:
+          - accepted_values:
+              values: ['card', 'cash']
