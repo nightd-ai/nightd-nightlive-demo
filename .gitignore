@@ -1,0 +1,8 @@
+target/
+logs/
+nightlive.duckdb
+nightlive.duckdb.wal
+.venv/
+__pycache__/
+*.pyc
+.seeds_backup/
