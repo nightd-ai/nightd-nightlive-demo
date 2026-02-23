@@ -17,3 +17,14 @@ models:
           - relationships:
               to: ref('srv_artists')
               field: artist_id
+      - name: fee
+        tests:
+          - dbt_expectations.expect_column_mean_to_be_between:
+              min_value: 2050
+              max_value: 2350
+          - dbt_expectations.expect_column_stdev_to_be_between:
+              min_value: 1600
+              max_value: 2000
+          - dbt_expectations.expect_column_median_to_be_between:
+              min_value: 1400
+              max_value: 1700
