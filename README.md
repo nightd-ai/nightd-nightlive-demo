@@ -1,6 +1,6 @@
 # nightlive
 
-Nightlife platform managing clubs, events, DJs, ticket sales, door entry, bar transactions, artist bookings, and sound system logistics — inspired by the Berlin techno scene. Built with dbt on DuckDB. Designed as a test bench for the nightd agent.
+Nightlife platform managing clubs, events, DJs, ticket sales, door entry, bar transactions, artist bookings, and sound system logistics - inspired by the Berlin techno scene. Built with dbt on DuckDB. Designed as a test bench for the nightd agent.
 
 ## Quick Start
 
@@ -44,7 +44,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 
 ![Entity Relationships](images/entity_relationships.png)
 
-#### venues — Clubs and event spaces with capacity and licensing information
+#### venues - Clubs and event spaces with capacity and licensing information
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -62,7 +62,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | opening_hours_end | varchar | Typical closing time (e.g. "20:00" next day) |
 | headliner_minimum_fee | numeric | Minimum fee for headliner slots at this venue |
 
-#### artists — DJs and live acts
+#### artists - DJs and live acts
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -73,7 +73,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | is_resident | boolean | Whether artist is a venue resident |
 | home_city | varchar | Artist's home city |
 
-#### events — Parties and club nights (often cross midnight, can span 12-48h)
+#### events - Parties and club nights (often cross midnight, can span 12-48h)
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -86,7 +86,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | door_policy | varchar | strict, relaxed, members_only |
 | event_status | varchar | draft, confirmed, live, completed |
 
-#### lineup_slots — Artist-to-event set time assignments per room
+#### lineup_slots - Artist-to-event set time assignments per room
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -99,7 +99,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | is_headliner | boolean | Whether this is a headliner slot |
 | fee | numeric | Artist fee for this slot |
 
-#### tickets — Presale and at-door tickets
+#### tickets - Presale and at-door tickets
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -110,7 +110,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | purchase_timestamp | timestamp | When the ticket was purchased |
 | ticket_status | varchar | used, refunded, cancelled |
 
-#### door_entries — Door scan and entry records, including re-entries (smoking breaks)
+#### door_entries - Door scan and entry records, including re-entries (smoking breaks)
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -122,7 +122,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | entry_status | varchar | admitted, rejected |
 | is_reentry | boolean | Whether this is a re-entry |
 
-#### bar_transactions — POS bar/drink transactions
+#### bar_transactions - POS bar/drink transactions
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -136,7 +136,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | payment_method | varchar | card, cash |
 | tab_ref | varchar | Tab reference (nullable, for running tabs) |
 
-#### bookings — Artist booking contracts
+#### bookings - Artist booking contracts
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -148,7 +148,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | rider_requirements | varchar | basic_rider, standard_rider, premium_rider |
 | cancellation_terms | varchar | Cancellation notice period |
 
-#### sound_checks — Pre-event sound system checks per room
+#### sound_checks - Pre-event sound system checks per room
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -161,7 +161,7 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 | equipment_list | varchar | Pipe-delimited equipment list |
 | engineer_signoff | boolean | Whether sound engineer signed off |
 
-#### payouts — Artist payment records
+#### payouts - Artist payment records
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -175,13 +175,13 @@ The provided seeds contain NULL values that intentionally break the data tests. 
 
 These rules are enforced by 43 singular SQL tests and 49 schema tests (unique, not_null, accepted_values, relationships):
 
-1. **Event timing** — Events typically start between 22:00-02:00 and end between 06:00-Monday afternoon. Berghain Klubnacht runs Friday midnight through Sunday evening. Event start must be at or after venue opening time and at or before the first door entry. Event end must cover all lineup sets and not exceed venue closing time.
-2. **Door policy** — Berghain has "strict" door policy; most other venues are "relaxed" or "members_only".
-3. **Re-entries** — Common for smoking breaks. A re-entry requires a prior admission for the same ticket. Re-entry counts towards running occupancy.
-4. **Headliner minimums** — Each venue has a minimum fee for headliner slots. Headliners must never be paid below this threshold.
-5. **Artist exclusivity** — Artists cannot be double-booked at overlapping times across different venues.
-6. **Room scheduling** — No two artists in the same room at the same time. Set end must be after set start. Openers cannot be marked as headliners.
-7. **Sound compliance** — SPL readings must not exceed the venue's licensed limit. Every active room must have a sound check before the event starts.
-8. **Financial integrity** — Lineup fees must match booking fees per artist. Booking fees must balance against lineup fees per event. Payout amounts must match booking fees. Paid bookings must have payouts; confirmed bookings must not. No payouts before the event date.
-9. **Operational windows** — Door entries and bar transactions must occur during event hours. Bar sales require a prior admitted entry. Tickets cannot be refunded after door entry. No duplicate ticket scans.
-10. **Referential consistency** — Venue IDs in door entries, bar transactions, and sound checks must match the event's venue. Ticket event IDs must match door entry event IDs. All event references across tables must point to existing events.
+1. **Event timing** - Events typically start between 22:00-02:00 and end between 06:00-Monday afternoon. Berghain Klubnacht runs Friday midnight through Sunday evening. Event start must be at or after venue opening time and at or before the first door entry. Event end must cover all lineup sets and not exceed venue closing time.
+2. **Door policy** - Berghain has "strict" door policy; most other venues are "relaxed" or "members_only".
+3. **Re-entries** - Common for smoking breaks. A re-entry requires a prior admission for the same ticket. Re-entry counts towards running occupancy.
+4. **Headliner minimums** - Each venue has a minimum fee for headliner slots. Headliners must never be paid below this threshold.
+5. **Artist exclusivity** - Artists cannot be double-booked at overlapping times across different venues.
+6. **Room scheduling** - No two artists in the same room at the same time. Set end must be after set start. Openers cannot be marked as headliners.
+7. **Sound compliance** - SPL readings must not exceed the venue's licensed limit. Every active room must have a sound check before the event starts.
+8. **Financial integrity** - Lineup fees must match booking fees per artist. Booking fees must balance against lineup fees per event. Payout amounts must match booking fees. Paid bookings must have payouts; confirmed bookings must not. No payouts before the event date.
+9. **Operational windows** - Door entries and bar transactions must occur during event hours. Bar sales require a prior admitted entry. Tickets cannot be refunded after door entry. No duplicate ticket scans.
+10. **Referential consistency** - Venue IDs in door entries, bar transactions, and sound checks must match the event's venue. Ticket event IDs must match door entry event IDs. All event references across tables must point to existing events.

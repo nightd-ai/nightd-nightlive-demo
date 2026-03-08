@@ -25,8 +25,8 @@ SC023,E016,V001,bar_area,2024-12-20 21:00:00,91,funktion_one_bar|subs_x2|monitor
 SC024,E017,V004,main_floor,2024-12-21 18:00:00,93,void_main|subs_x4|monitors_x8,true
 SC025,E017,V004,garden,2024-12-21 19:00:00,88,void_garden|subs_x2|monitors_x4,true
 SC026,E018,V005,main_floor,2024-12-21 20:00:00,100,custom_main|subs_x2|monitors_x4,true
-SC027,E019,V008,main_floor,2024-12-20 19:00:00,94,martin_audio_main|subs_x4|monitors_x6,true
-SC028,E019,V008,bar_area,2024-12-20 20:00:00,90,martin_audio_bar|subs_x2|monitors_x2,true
+SC027,E019,,main_floor,2024-12-20 19:00:00,94,martin_audio_main|subs_x4|monitors_x6,true
+SC028,E019,V008,,2024-12-20 20:00:00,90,martin_audio_bar|subs_x2|monitors_x2,true
 SC029,E020,V006,main_floor,2024-12-21 19:00:00,101,funktion_one_main|subs_x2|monitors_x4,true
 SC030,E021,V002,main_floor,2025-01-10 20:00:00,98,martin_audio_main|subs_x4|monitors_x6,true
 SC031,E022,V003,main_floor,2025-01-10 19:00:00,96,db_audiotechnik_main|subs_x2|monitors_x4,true
