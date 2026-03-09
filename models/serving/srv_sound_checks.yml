@@ -17,3 +17,8 @@ models:
           - relationships:
               to: ref('srv_venues')
               field: venue_id
+      - name: spl_reading_db
+        tests:
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 85
+              max_value: 105

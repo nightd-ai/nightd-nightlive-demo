@@ -1,13 +1,17 @@
-#dbt
+# claude
+agents/**/memory/
+
+# dbt
+dbt_packages/
 logs/
 target/
 .user.yml
 
-#duckb
+# duckb
 nightlive.duckdb
 nightlive.duckdb.wal
 
-#Python
+# Python
 .venv/
 __pycache__/
 *.pyc
