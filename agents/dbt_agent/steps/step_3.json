@@ -1,0 +1,85 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "FAILURE"
+      ]
+    },
+    "plan": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "row": {
+            "type": "integer"
+          },
+          "column": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "file",
+          "row",
+          "column",
+          "value"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Ordered list of cell-level edits. Each entry identifies a seed file, a 0-based row index, a column name, and the corrected value to write."
+    },
+    "constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "file": {
+            "type": "string"
+          },
+          "row": {
+            "type": "integer"
+          },
+          "column": {
+            "type": "string"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "file",
+          "row",
+          "column",
+          "rules"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Invariants that each corrected value must satisfy in future iterations, e.g. 'capacity > 0' or 'status in (active, inactive)'."
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Concrete, actionable improvements to prompts, guardrails, or workflow. Omit observations that do not prescribe a change."
+    }
+  },
+  "required": [
+    "status",
+    "plan",
+    "constraints",
+    "lessons"
+  ],
+  "additionalProperties": false
+}

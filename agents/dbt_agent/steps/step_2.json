@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "SUCCESS",
+        "FAILURE"
+      ]
+    },
+    "research": {
+      "type": "string",
+      "description": "Root cause analysis of the failing test: trace the data lineage back to the originating seed rows, then explain why the current values cause the failure. Reference every file path involved and, for seed files, the row index (0-based) and column name."
+    },
+    "lessons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Concrete, actionable improvements to guardrails, prompts, or workflow. Omit observations that do not prescribe a change."
+    }
+  },
+  "required": [
+    "status",
+    "research",
+    "lessons"
+  ],
+  "additionalProperties": false
+}

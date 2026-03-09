@@ -10,6 +10,23 @@ authors = [
 ]
 requires-python = ">=3.12,<3.14"
 dependencies = [
+    "claude-agent-sdk>=0.1.48",
     "dbt-core>=1.11.6",
     "dbt-duckdb>=1.10.1",
+    "pyyaml>=6.0.3",
+    "ruff>=0.8.4",
 ]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+section-order = ["third-party", "first-party", "local-folder"]
+known-first-party = ["agents"]
+lines-between-types = 1
+lines-after-imports = 2
+force-single-line = true
