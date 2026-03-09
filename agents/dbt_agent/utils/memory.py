@@ -20,7 +20,7 @@ class State:
             if key not in ("status", "constraints", "lessons"):
                 state[key] = data[key]
 
-        self.path.write_text(yaml.dump(state, default_flow_style=False, sort_keys=True))
+        self.path.write_text(yaml.dump(state, default_flow_style=False, sort_keys=False))
 
 
 class Constraints:
@@ -40,7 +40,7 @@ class Constraints:
                 constraints["constraints"].append(other_constraint)
                 constraints["constraints"] = sorted(constraints["constraints"], key=Constraints.tuplify)
 
-        self.path.write_text(yaml.dump(constraints, default_flow_style=False, sort_keys=True))
+        self.path.write_text(yaml.dump(constraints, default_flow_style=False, sort_keys=False))
 
     @staticmethod
     def search(constraints, other_constraint):
@@ -66,4 +66,4 @@ class Lessons:
         for other_lesson in other_lessons:
             lessons["lessons"].append(other_lesson)
 
-        self.path.write_text(yaml.dump(lessons, default_flow_style=False, sort_keys=True))
+        self.path.write_text(yaml.dump(lessons, default_flow_style=False, sort_keys=False))

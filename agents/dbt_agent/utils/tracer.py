@@ -8,7 +8,10 @@ from claude_agent_sdk.types import TextBlock
 from datetime import timedelta
 
 
-logger = logging.getLogger()
+logger = logging.getLogger("dbt_agent")
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.INFO)
+logger.propagate = False
 
 
 class Tracer:
@@ -37,7 +40,7 @@ class StepTracer:
             "step_count": self.tracer.step_count,
         }
 
-        logger.info(yaml.dump({"trace": trace}, default_flow_style=False).strip())
+        logger.info(yaml.dump({"trace": trace}, default_flow_style=False, sort_keys=False).strip())
 
         return self
 
@@ -50,7 +53,7 @@ class StepTracer:
             "total_runtime": str(timedelta(seconds=int(time.monotonic() - self.tracer.started_at))),
         }
 
-        logger.info(yaml.dump({"trace": trace}, default_flow_style=False).strip())
+        logger.info(yaml.dump({"trace": trace}, default_flow_style=False, sort_keys=False).strip())
 
         return False
 
@@ -61,8 +64,8 @@ class StepTracer:
                     self._trace(block.text)
         elif isinstance(message, ResultMessage):
             self.tracer.total_cost += message.total_cost_usd or 0.0
-        else:
-            self._trace(str(message), **kwargs)
+        elif isinstance(message, str):
+            self._trace(message, **kwargs)
 
     def _trace(self, message, **kwargs):
         trace = {
@@ -73,4 +76,4 @@ class StepTracer:
             **kwargs,
         }
 
-        logger.info(yaml.dump({"trace": trace}, default_flow_style=False).strip())
+        logger.info(yaml.dump({"trace": trace}, default_flow_style=False, sort_keys=False).strip())

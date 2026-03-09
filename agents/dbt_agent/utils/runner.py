@@ -55,8 +55,8 @@ class Runner:
 
         options = ClaudeAgentOptions(
             model=self.model,
-            max_turns=10,
-            max_budget_usd=1,
+            max_turns=99,
+            max_budget_usd=5,
             system_prompt={
                 "type": "preset",
                 "preset": "claude_code",

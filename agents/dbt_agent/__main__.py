@@ -1,6 +1,5 @@
 import argparse
 import asyncio
-import logging
 
 from .steps import Status
 from .steps import Step
@@ -50,8 +49,6 @@ class StateMachine:
             case (_, Status.FAILURE):
                 self.step = None
 
-
-logging.basicConfig(level=logging.INFO)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model", default="sonnet")

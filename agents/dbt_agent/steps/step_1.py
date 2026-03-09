@@ -28,7 +28,7 @@ def extract_failure(results):
     for result in results:
         if result.status in ("error", "fail"):
             return {
-                "status": result.status,
+                "status": str(result.status),
                 "message": result.message,
                 "node": {
                     "name": result.node.name,
