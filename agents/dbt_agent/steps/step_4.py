@@ -3,24 +3,15 @@ import yaml
 
 from pathlib import Path
 
-from ..utils import memory
+from .. import STORAGE_PATH
 from . import Status
 from . import Step
 
 
 def run(tracer):
-    path = memory.PATH / f"{Step.STEP_3.value}.yml"
-    data = yaml.safe_load(path.read_text())
+    with open(STORAGE_PATH / f"{Step.STEP_3.value}.yml") as file:
+        plan = yaml.safe_load(file)["plan"]
 
-    status = execute_plan(tracer, data["plan"])
-
-    if status == Status.SUCCESS:
-        memory.record(Step.STEP_4, {"constraints": data["constraints"]})
-
-    return status
-
-
-def execute_plan(tracer, plan):
     for edit in plan:
         path = Path(edit["file"])
 

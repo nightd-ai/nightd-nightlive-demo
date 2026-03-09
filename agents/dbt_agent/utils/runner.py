@@ -6,6 +6,7 @@ from claude_agent_sdk import ClaudeSDKClient
 from claude_agent_sdk import HookMatcher
 from claude_agent_sdk.types import ResultMessage
 
+from .. import STORAGE_PATH
 from ..hooks.validate_bash import validate_bash
 from ..hooks.validate_edit import validate_edit
 from ..hooks.validate_glob import validate_glob
@@ -49,7 +50,7 @@ class Runner:
             ### Glob / Grep / Read
 
             - You MAY read dbt project files (models/, seeds/, tests/) and memory files
-            ({memory.PATH}/).
+            ({STORAGE_PATH}/).
         """
 
         options = ClaudeAgentOptions(
@@ -93,7 +94,7 @@ class Runner:
         )
 
         async with ClaudeSDKClient(options) as client:
-            await client.query(Step.load(f"{step.value}.md").format(path=memory.PATH))
+            await client.query(Step.load(f"{step.value}.md").format(path=STORAGE_PATH))
 
             async for message in client.receive_response():
                 tracer.trace(message)

@@ -1,14 +1,11 @@
 import json
 
 from dbt.cli.main import dbtRunner
-from pathlib import Path
 
+from .. import PROJECT_PATH
 from ..utils import memory
 from . import Status
 from . import Step
-
-
-PATH = Path(__file__).parent.parent.parent.parent
 
 
 def run(tracer):
@@ -26,7 +23,7 @@ def run(tracer):
 
 
 def extract_failure(results):
-    manifest = json.loads((PATH / "target" / "manifest.json").read_text())
+    manifest = json.loads((PROJECT_PATH / "target" / "manifest.json").read_text())
 
     for result in results:
         if result.status in ("error", "fail"):

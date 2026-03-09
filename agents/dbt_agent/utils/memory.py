@@ -1,10 +1,6 @@
 import yaml
 
-from pathlib import Path
-
-
-PATH = Path(__file__).parent.parent / "memory"
-PATH.mkdir(exist_ok=True)
+from .. import STORAGE_PATH
 
 
 def record(step, data):
@@ -15,7 +11,7 @@ def record(step, data):
 
 class State:
     def __init__(self, step):
-        self.path = PATH / f"{step.value}.yml"
+        self.path = STORAGE_PATH / f"{step.value}.yml"
 
     def record(self, data):
         state = {}
@@ -29,7 +25,7 @@ class State:
 
 class Constraints:
     def __init__(self):
-        self.path = PATH / "constraints.yml"
+        self.path = STORAGE_PATH / "constraints.yml"
 
     def record(self, other_constraints):
         constraints = {"constraints": []}
@@ -59,7 +55,7 @@ class Constraints:
 
 class Lessons:
     def __init__(self):
-        self.path = PATH / "lessons.yml"
+        self.path = STORAGE_PATH / "lessons.yml"
 
     def record(self, other_lessons):
         lessons = {"lessons": []}
